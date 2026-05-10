@@ -1,59 +1,50 @@
 /**
- * Name: Tevin Donegan
- * Date: May 9, 2026
- * Assignment: SDC230 Performance Assessment - IO & Operators
- * Description:
- * This application demonstrates the use of input, output,
- * arithmetic operators, and comparison operators using
- * integer and floating-point values.
+ * Tevin Donegan
+ * May 10, 2026
+ * SDC230 Performance Assessment - Smallest Number
+ *
+ * This program asks the user how many integers they want to enter,
+ * accepts the integers using a loop, and determines the smallest
+ * number entered by the user.
  */
 
-
+import java.util.Scanner;
 
 public class App {
 
     public static void main(String[] args) {
 
-        // Header
-        System.out.println("Tevin Donegan - Week 1 PA Classes");
-        System.out.println();
+        Scanner input = new Scanner(System.in);
 
-        // Create Employee objects
-        Employee employee1 = new Employee("John", "Smith", 2500.00);
-        Employee employee2 = new Employee("Mary", "Johnson", 500.00); // Invalid salary
+        // Print heading
+        System.out.println("Tevin Donegan - Week 2 PA Smallest Number");
 
-        // Display original employee information
-        System.out.println("Original Employee Information");
-        System.out.println("-----------------------------");
+        // Ask user how many integers they will enter
+        System.out.print("How many integers will you enter? ");
+        int count = input.nextInt();
 
-        System.out.println("Employee 1:");
-        System.out.println("Name: " + employee1.getFirstName() + " " + employee1.getLastName());
-        System.out.println("Monthly Salary: $" + employee1.getMonthlySalary());
-        System.out.println();
+        // Variable to store the smallest number
+        int smallest = 0;
 
-        System.out.println("Employee 2:");
-        System.out.println("Name: " + employee2.getFirstName() + " " + employee2.getLastName());
-        System.out.println("Monthly Salary: $" + employee2.getMonthlySalary());
-        System.out.println();
+        // Loop to get integers from the user
+        for (int i = 1; i <= count; i++) {
 
-        // Update employee information
-        employee1.setLastName("Williams");
-        employee2.setFirstName("Sarah");
+            System.out.print("Enter integer #" + i + ": ");
+            int number = input.nextInt();
 
-        employee1.setMonthlySalary(3200.00);
-        employee2.setMonthlySalary(2800.00);
+            // First number becomes the smallest
+            if (i == 1) {
+                smallest = number;
+            }
+            // Check if current number is smaller
+            else if (number < smallest) {
+                smallest = number;
+            }
+        }
 
-        // Display updated employee information
-        System.out.println("Updated Employee Information");
-        System.out.println("----------------------------");
+        // Print the smallest integer entered
+        System.out.println("The smallest integer entered is: " + smallest);
 
-        System.out.println("Employee 1:");
-        System.out.println("Name: " + employee1.getFirstName() + " " + employee1.getLastName());
-        System.out.println("Monthly Salary: $" + employee1.getMonthlySalary());
-        System.out.println();
-
-        System.out.println("Employee 2:");
-        System.out.println("Name: " + employee2.getFirstName() + " " + employee2.getLastName());
-        System.out.println("Monthly Salary: $" + employee2.getMonthlySalary());
+        input.close();
     }
 }
